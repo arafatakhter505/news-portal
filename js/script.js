@@ -35,6 +35,10 @@ const displayNews = (news, categorieName) => {
   } else {
     itemsFound.innerText = `${news.length} items found for categories ${categorieName}`;
   }
+  news.sort(function (a, b) {
+    return a.total_view - b.total_view;
+  });
+  news.reverse();
   news.forEach((newsItem) => {
     const newsDiv = document.createElement("div");
     newsDiv.classList.add("card");
@@ -60,7 +64,7 @@ const displayNews = (news, categorieName) => {
             </p>
             <p class="card-text">
                 <div class="row d-flex justify-content-between align-items-center">
-                <div class="col-4 d-flex align-items-center">
+                <div class="col-8 col-md-4 d-flex align-items-center">
                     <img src="${
                       newsItem.author.img
                     }" class="w-25 rounded-circle me-3" alt="">
@@ -75,20 +79,20 @@ const displayNews = (news, categorieName) => {
                         }</small>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-4 col-md-2">
                     <i class="fa-solid fa-eye"></i>
                     <span>${
                       newsItem.total_view ? newsItem.total_view : "No Found"
                     }</span>
                 </div>
-                <div class="col-4">
+                <div class="col-6 col-md-4">
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                 </div>
-                <div class="col-2 text-end">
+                <div class="col-6 col-md-2 text-end">
                     <i onclick = "loadNewsDetails('${
                       newsItem._id
                     }')" data-bs-toggle="modal"
