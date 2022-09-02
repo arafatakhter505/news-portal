@@ -36,7 +36,97 @@
     </header>
     <!-- header section end -->
     <!-- main section start -->
-    <main class="mt-4"></main>
+    <main class="my-4">
+      <section id="blog-container" class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card">
+              <img src="images/var_let.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">
+                  The difference between var, let, const
+                </h5>
+                <p class="card-text">
+                  You can create multiple variables with the same name using the
+                  var keyword. You cannot create multiple variables with the
+                  same name using the let keyword. The let keyword can be used
+                  to change the value of a variable. Using the const keyword
+                  means that its value cannot be changed.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img src="images/arrow.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">
+                  The difference between arrow function and regular function
+                </h5>
+                <p class="card-text">
+                  Regular functions created using function declarations or
+                  expressions are constructible and callable. Since regular
+                  functions are constructible, they can be called using the new
+                  keyword. However, the arrow functions are only callable and
+                  not constructible, i.e arrow functions can never be used as
+                  constructor functions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img
+                src="images/map.jpg"
+                height="350px"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  The difference between map, filter, find, foreach
+                </h5>
+                <p class="card-text">
+                  Foreach takes a callback function and run that callback
+                  function on each element of the array one by one. The main
+                  difference between forEach and filter is that forEach just
+                  loop over the array and executes the callback but filter
+                  executes the callback and check its return value. Map like
+                  filter & foreach takes a callback and run it against every
+                  element on the array but whats makes it unique is it generate
+                  a new array based on your existing array. The find function is
+                  used to find any value in an array
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img
+                src="images/template-strings.png"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Why used template string</h5>
+                <p class="card-text">
+                  Template literals are enclosed by backtick (`) characters
+                  instead of double or single quotes. Along with having normal
+                  strings, template literals can also contain other parts called
+                  placeholders, which are embedded expressions delimited by a
+                  dollar sign and curly braces: ${expression}. The strings and
+                  placeholders get passed to a function — either a default
+                  function, or a function you supply. The default function (when
+                  you don't supply your own) just performs string interpolation
+                  to do substitution of the placeholders and then concatenate
+                  the parts into a single string.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <!-- main section end -->
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>

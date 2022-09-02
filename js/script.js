@@ -50,11 +50,11 @@ const displayNews = (news, categorieName) => {
       newsDiv.classList.add("mb-3");
       newsDiv.classList.add("p-3");
       newsDiv.innerHTML = `
-      <div class="row g-0">
+      <div class="row d-flex align-items-center g-0">
           <div class="col-md-4">
               <img src="${
                 newsItem.image_url
-              }" class="img-fluid rounded-start" style="height: 100%;" />
+              }" class="img-fluid rounded-start" />
           </div>
           <div class="col-md-8">
               <div class="card-body">
