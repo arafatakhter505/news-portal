@@ -11,23 +11,25 @@ const displayNavbar = (categories) => {
     const categorieItem = document.createElement("li");
     categorieItem.classList.add("nav-item");
     categorieItem.innerHTML = `
-    <a class="nav-link" href="#">${categorie.category_name}</a>
+    <a class="nav-link" onclick="loadNews('${categorie.category_id}', '${categorie.category_name}')" href="#">${categorie.category_name}</a>
     `;
     categoriesMenu.appendChild(categorieItem);
   });
 };
 
-const loadNews = (categorieId) => {
+const loadNews = (categorieId, categorieName) => {
   fetch(`https://openapi.programming-hero.com/api/news/category/${categorieId}`)
     .then((res) => res.json())
-    .then((data) => displayNews(data.data))
+    .then((data) => displayNews(data.data, categorieName))
     .catch((error) => console.log(error));
 };
 
-const displayNews = (news) => {
+const displayNews = (news, categorieName) => {
   const newsContainer = document.getElementById("news-container");
+  newsContainer.textContent = ``;
+  const itemsFound = document.getElementById("items-found");
+  itemsFound.innerText = `${news.length} items found for categories ${categorieName}`;
   news.forEach((newsItem) => {
-    console.log(newsItem);
     const newsDiv = document.createElement("div");
     newsDiv.classList.add("card");
     newsDiv.classList.add("mb-3");
@@ -88,5 +90,5 @@ const displayNews = (news) => {
   });
 };
 
-loadNews("08");
+loadNews("08", "All News");
 loadNavbar();
