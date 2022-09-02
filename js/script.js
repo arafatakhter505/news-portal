@@ -43,7 +43,12 @@ const displayNews = (news, categorieName) => {
         </div>
         <div class="col-md-8">
             <div class="card-body">
-            <h4 class="card-title">${newsItem.title}</h4>
+            <h4 onclick = "loadNewsDetails('${
+              newsItem._id
+            }')" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop" class="card-title">${
+                newsItem.title
+              }</h4>
             <p class="card-text">
                 ${newsItem.details.slice(0, 200) + "....."}
             </p>
@@ -78,7 +83,10 @@ const displayNews = (news, categorieName) => {
                     <i class="fa-regular fa-star"></i>
                 </div>
                 <div class="col-2 text-end">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i onclick = "loadNewsDetails('${
+                      newsItem._id
+                    }')" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" class="fa-solid fa-arrow-right"></i>
                 </div>
                 </div>
             </p>
@@ -90,5 +98,28 @@ const displayNews = (news, categorieName) => {
   });
 };
 
+const loadNewsDetails = (newsId) => {
+  fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
+    .then((res) => res.json())
+    .then((data) => displayNewsDetails(data.data[0]))
+    .catch((error) => console.log(error));
+};
+
+const displayNewsDetails = (newsDetails) => {
+  const newsTitle = document.getElementById("news-title");
+  const authorInfo = document.getElementById("author-info");
+  const publishInfo = document.getElementById("publish-info");
+  const newsThumb = document.getElementById("news-thumb");
+  const newsDescription = document.getElementById("news-detail");
+
+  newsTitle.innerText = newsDetails.title;
+  authorInfo.innerText = `Author: ${
+    newsDetails.author.name ? newsDetails.author.name : "author name not found"
+  }`;
+  publishInfo.innerText = `Publish: ${newsDetails.author.published_date}`;
+  newsThumb.src = newsDetails.image_url;
+  newsDescription.innerText = newsDetails.details;
+};
+loadNewsDetails("0282e0e58a5c404fbd15261f11c2ab6a");
 loadNews("08", "All News");
 loadNavbar();
